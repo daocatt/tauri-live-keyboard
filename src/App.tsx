@@ -130,13 +130,11 @@ function App() {
           <div className="grid grid-cols-3 gap-6">
             {keys.map((key, idx) => {
               const column = idx % 3;
-              const isCenter = column === 1 || key === "0";
               const isLeft = column === 0 && key !== "";
               const isRight = column === 2;
               
               const activeColor = isLeft ? "bg-[#ff003c]" : isRight ? "bg-[#00e5ff]" : "bg-white";
               const shadowColor = isLeft ? "shadow-[#ff003c]/60" : isRight ? "shadow-[#00e5ff]/60" : "shadow-white/60";
-              const labelColor = isLeft ? "text-[#ff003c]" : isRight ? "text-[#00e5ff]" : "text-blue-400";
 
               return key ? (
                 <button
