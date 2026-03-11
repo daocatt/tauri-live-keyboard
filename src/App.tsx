@@ -21,6 +21,7 @@ function App() {
     return localStorage.getItem("custom-sound-path");
   });
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   const keys = [
     "1", "2", "3",
@@ -246,6 +247,38 @@ function App() {
               className="mt-6 w-full py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold transition-all"
             >
               完成 / Done
+            </button>
+            <button 
+              onClick={() => setIsAboutOpen(true)}
+              className="mt-3 w-full py-3 text-sm text-slate-400 hover:text-white rounded-2xl transition-all"
+            >
+              关于 / About
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* About Screen */}
+      {isAboutOpen && (
+        <div className="absolute inset-0 z-[60] flex items-center justify-center p-6 animate-in fade-in zoom-in-95 duration-300">
+          <div className="bg-slate-900/90 backdrop-blur-3xl w-full max-w-sm rounded-[2.5rem] border border-white/10 p-8 shadow-3xl flex flex-col items-center text-center">
+            
+            <img src="/logo.png" alt="Live Keyboard Logo" className="w-24 h-24 rounded-3xl mb-4 shadow-[0_0_30px_rgba(0,229,255,0.3)] pointer-events-none select-none" />
+            
+            <h2 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff003c] via-white to-[#00e5ff] tracking-widest mb-2 italic">LIVE KEYBOARD</h2>
+            <p className="text-slate-400 text-sm mb-6 font-bold tracking-widest">v0.1.0</p>
+            
+            <div className="text-sm text-slate-300 space-y-3 mb-8 w-full px-4">
+              <p>A dynamic, sound-reactive keyboard experience perfectly designed for aesthetics.</p>
+              <div className="h-px w-full bg-white/10 my-4 shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
+              <p>Built with React, TailwindCSS, & Tauri.</p>
+            </div>
+            
+            <button 
+              onClick={() => setIsAboutOpen(false)}
+              className="w-full py-3 bg-white/10 hover:bg-white/20 rounded-2xl font-bold transition-all active:scale-95"
+            >
+              返回 / Back
             </button>
           </div>
         </div>

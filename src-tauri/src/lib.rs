@@ -59,6 +59,8 @@ fn internal_play_sound(app_handle: &AppHandle, key: &str) -> Result<(), String> 
         let try_paths = [
             format!("voices/{}.mp3", key),
             format!("voices/{}.MP3", key),
+            format!("public/voices/{}.mp3", key),
+            format!("_up_/public/voices/{}.mp3", key),
             format!("{}.mp3", key),
         ];
 
@@ -67,6 +69,23 @@ fn internal_play_sound(app_handle: &AppHandle, key: &str) -> Result<(), String> 
                 if path.exists() {
                     resource_path = path;
                     break;
+                }
+            }
+        }
+        
+        // Brute-force fallback directly traversing the resource directory
+        if !resource_path.exists() {
+            if let Ok(res_dir) = app_handle.path().resource_dir() {
+                let direct_paths = [
+                    res_dir.join("voices").join(format!("{}.mp3", key)),
+                    res_dir.join("public").join("voices").join(format!("{}.mp3", key)),
+                    res_dir.join("_up_").join("public").join("voices").join(format!("{}.mp3", key)),
+                ];
+                for path in direct_paths {
+                    if path.exists() {
+                        resource_path = path;
+                        break;
+                    }
                 }
             }
         }
