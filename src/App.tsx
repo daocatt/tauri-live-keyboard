@@ -263,7 +263,7 @@ function App() {
         <div className="absolute inset-0 z-[60] flex items-center justify-center p-6 animate-in fade-in zoom-in-95 duration-300">
           <div className="bg-slate-900/90 backdrop-blur-3xl w-full max-w-sm rounded-[2.5rem] border border-white/10 p-8 shadow-3xl flex flex-col items-center text-center">
             
-            <img src="/logo.png" alt="Live Keyboard Logo" className="w-24 h-24 rounded-3xl mb-4 shadow-[0_0_30px_rgba(0,229,255,0.3)] pointer-events-none select-none" />
+            <img src="/keyboard-logo.png" alt="Live Keyboard Logo" className="w-24 h-24 mb-4 drop-shadow-[0_0_20px_rgba(0,229,255,0.4)] pointer-events-none select-none" />
             
             <h2 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff003c] via-white to-[#00e5ff] tracking-widest mb-2 italic">LIVE KEYBOARD</h2>
             <p className="text-slate-400 text-sm mb-6 font-bold tracking-widest">v0.1.0</p>
@@ -283,11 +283,6 @@ function App() {
           </div>
         </div>
       )}
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      `}} />
     </div>
   );
 }
