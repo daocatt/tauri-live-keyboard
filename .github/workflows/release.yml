@@ -27,6 +27,10 @@ jobs:
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Add Rust targets for Mac universal build
+        if: matrix.platform == 'macos-latest'
+        run: rustup target add aarch64-apple-darwin x86_64-apple-darwin
+
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
@@ -45,4 +49,4 @@ jobs:
           releaseBody: "See the assets below to download the application. Windows user please download the .exe (NSIS) or .msi file."
           releaseDraft: true
           prerelease: false
-          args: ""
+          args: ${{ matrix.platform == 'macos-latest' && '--target universal-apple-darwin' || '' }}
